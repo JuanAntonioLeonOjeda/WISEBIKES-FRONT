@@ -1,15 +1,23 @@
-import { useEffect, useState } from 'react'
+import { 
+  useEffect,
+   useState, 
+   useContext 
+  } from 'react'
 import Button from '../components/Button'
 
 import { Link } from 'react-router-dom'
 
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
+import Input from '@mui/material/Input';
 import {
   getAllUsers
 } from '../services/user.service'
 
+import userContext from '../context/userContext'
+
 const Home = () => {
+  const {setUserName} = useContext(userContext)
   const [ users, setUsers ] = useState([])
   const [ loading, setLoading ] = useState(true)
 
@@ -66,6 +74,12 @@ const Home = () => {
       )
     })
   }
+
+
+  const handleChange = (e) => {
+    setUserName(e.target.value)
+  }
+
   return (
     <>
       <h1>HOME</h1>
@@ -79,6 +93,7 @@ const Home = () => {
           onClick={handleClick}
         />
       </Box>
+      <Input onChange={handleChange} />
       {displayOptions()}
       {/* <button onClick={handleClick}>Get All Users</button> */}
       {loading ? <h3>Loading...</h3> : displayUsers()}
