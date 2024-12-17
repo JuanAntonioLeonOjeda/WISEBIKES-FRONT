@@ -16,7 +16,12 @@ function App() {
   
   return (
     <>
-      <testContext.Provider value={{student,setStudent}}>
+      {/* <testContext.Provider value={{student,setStudent}}>
+        <userContext.Provider value={value}>
+          <RouterProvider router={routerInst} />
+        </userContext.Provider>
+      </testContext.Provider> */}
+      <testContext.Provider value={{ student, setStudent }}>
         <userContext.Provider value={value}>
           <RouterProvider router={routerInst} />
         </userContext.Provider>
