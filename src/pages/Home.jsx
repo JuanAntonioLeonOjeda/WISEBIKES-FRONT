@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import Button from '../components/Button'
 
+import { Link } from 'react-router-dom'
+
 import {
   getAllUsers
 } from '../services/user.service'
@@ -20,14 +22,14 @@ const Home = () => {
     }
   ]
 
-  useEffect(() => {
-    const fetchAllUsers = async () => {
-      const users = await getAllUsers()
-      setUsers(users)
-      setLoading(false)
-    }
-    fetchAllUsers()
-  }, [])
+  // useEffect(() => {
+  //   const fetchAllUsers = async () => {
+  //     const users = await getAllUsers()
+  //     setUsers(users)
+  //     setLoading(false)
+  //   }
+  //   fetchAllUsers()
+  // }, [])
 
   // const handleClick = () =>{
   //   getAllUsers()
@@ -64,6 +66,7 @@ const Home = () => {
     <h1>
       HOME
     </h1>
+    <Link to="/about">hola</Link>
     { displayOptions() }
     {/* <button onClick={handleClick}>Get All Users</button> */}
     {
