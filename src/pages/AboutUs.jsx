@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useContext } from "react";
 import Accordion from "@mui/material/Accordion";
 import AccordionActions from "@mui/material/AccordionActions";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -6,7 +6,11 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Button from "@mui/material/Button";
 
+import userContext from '../context/userContext'
+
 export default function AboutUs() {
+  const {userName} = useContext(userContext)
+
   return (
     <div>
       <Accordion>
@@ -17,7 +21,7 @@ export default function AboutUs() {
           color="primary"
           sx={{ color: "red" }}
         >
-          Accordion 1
+          {userName}
         </AccordionSummary>
         <AccordionDetails>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
