@@ -10,7 +10,8 @@ import './App.css'
 function App() {
   const [ ayuda ,setAyuda] = useState(false)
   const [ userName, setUserName ] = useState('Pepita')
-  const [ student, setStudent ] = useState('Johana')
+  const [student, setStudent] = useState('Johana')
+  // const [ student, setStudent ] = useState('Johana')
 
   const value = { userName, setUserName}
   
@@ -21,7 +22,7 @@ function App() {
           <RouterProvider router={routerInst} />
         </userContext.Provider>
       </testContext.Provider> */}
-      <testContext.Provider value={{ student, setStudent }}>
+      <testContext.Provider value={{ student, setUserName }}>
         <userContext.Provider value={value}>
           <RouterProvider router={routerInst} />
         </userContext.Provider>
