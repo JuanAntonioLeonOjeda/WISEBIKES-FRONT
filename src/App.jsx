@@ -8,7 +8,7 @@ import routerInst from './router'
 import './App.css'
 
 function App() {
-
+  const [ ayuda ,setAyuda] = useState(false)
   const [ userName, setUserName ] = useState('Pepita')
   const [ student, setStudent ] = useState('Johana')
 
