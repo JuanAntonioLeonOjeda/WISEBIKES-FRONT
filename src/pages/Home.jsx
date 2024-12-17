@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import Button from '../components/Button'
-
+import Box from "@mui/material/Box";
+import Slider from "@mui/material/Slider";
 import {
   getAllUsers
 } from '../services/user.service'
@@ -20,6 +21,9 @@ const Home = () => {
     }
   ]
 
+  const handleClick = () => {
+    console.log('Click')
+  }
   useEffect(() => {
     const fetchAllUsers = async () => {
       const users = await getAllUsers()
@@ -34,7 +38,7 @@ const Home = () => {
   // }
 
   const displayOptions = () => {
-    return options.map((opt, idx) => {
+    return options?.map((opt, idx) => { 
       return (
         <Button
           key={idx}
@@ -46,7 +50,7 @@ const Home = () => {
   }
 
   const displayUsers = () => {
-    return users.map(usr => {
+    return users?.map(usr => { //? sostiene la posibilidad de que la base de datos este vacia
       return (
         <div key={usr.id}>
           <h3>
@@ -61,20 +65,22 @@ const Home = () => {
   }
   return (
     <>
-    <h1>
-      HOME
-    </h1>
-    { displayOptions() }
-    {/* <button onClick={handleClick}>Get All Users</button> */}
-    {
-      loading ?
-      <h3>
-        Loading...
-      </h3> :
-      displayUsers() 
-    }
+      <h1>HOME</h1>
+      <Box sx={{ width: 500, height: 100 }}>
+        <Slider
+          size="small"
+          defaultValue={50}
+          aria-label="Small"
+          valueLabelDisplay="auto"
+          color="secondary"
+          onClick={handleClick}
+        />
+      </Box>
+      {displayOptions()}
+      {/* <button onClick={handleClick}>Get All Users</button> */}
+      {loading ? <h3>Loading...</h3> : displayUsers()}
     </>
-  )
+  );
 }
 
 export default Home
