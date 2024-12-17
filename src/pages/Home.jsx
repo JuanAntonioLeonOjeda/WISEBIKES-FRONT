@@ -15,9 +15,11 @@ import {
 } from '../services/user.service'
 
 import userContext from '../context/userContext'
+import testContext from '../context/testContext';
 
 const Home = () => {
   const {setUserName} = useContext(userContext)
+  const { student, setStudent } = useContext(testContext)
   const [ users, setUsers ] = useState([])
   const [ loading, setLoading ] = useState(true)
 
@@ -80,6 +82,10 @@ const Home = () => {
     setUserName(e.target.value)
   }
 
+  const handleStudentName = (e) => {
+    setStudent(e.target.value)
+  }
+
   return (
     <>
       <h1>HOME</h1>
@@ -94,6 +100,9 @@ const Home = () => {
         />
       </Box>
       <Input onChange={handleChange} />
+      Change Student Name:
+      <Input onChange={handleStudentName} />
+      {student}
       {displayOptions()}
       {/* <button onClick={handleClick}>Get All Users</button> */}
       {loading ? <h3>Loading...</h3> : displayUsers()}

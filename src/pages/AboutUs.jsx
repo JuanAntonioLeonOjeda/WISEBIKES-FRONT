@@ -7,9 +7,11 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Button from "@mui/material/Button";
 
 import userContext from '../context/userContext'
+import testContext from "../context/testContext";
 
 export default function AboutUs() {
-  const {userName} = useContext(userContext)
+  const { userName } = useContext(userContext)
+  const { student } =useContext(testContext)
 
   return (
     <div>
@@ -34,7 +36,7 @@ export default function AboutUs() {
           aria-controls="panelimport React from 'react' 2-content"
           id="panel2-header"
         >
-          Accordion 2
+          {student}
         </AccordionSummary>
         <AccordionDetails>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
