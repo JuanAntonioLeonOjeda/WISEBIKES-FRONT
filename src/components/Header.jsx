@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import Button from '../components/Button'
+import Search from "./Search"
 
 const Header = () => {
   const navigate = useNavigate()
@@ -7,6 +8,10 @@ const Header = () => {
     {
       text: 'Home',
       fn: () => navigate('/home')
+    },
+    {
+      text: 'Bikes',
+      fn: () => navigate('/bikes')
     },
     {
       text: 'About',
@@ -28,6 +33,7 @@ const Header = () => {
   return (
     <div>
       {displayOptions()}
+      <Search />
     </div>
   )
 }
