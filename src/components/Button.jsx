@@ -1,11 +1,9 @@
 import PropTypes from "prop-types"
-import { useNavigate } from "react-router-dom"
-const Button = ({text, path}) => {
 
-  const navigate = useNavigate()
+const Button = ({text, fn}) => {
 
   const handleClick = () => {
-    navigate(path)
+    fn()
   }
 
   return (
@@ -19,7 +17,7 @@ const Button = ({text, path}) => {
 
 Button.propTypes = {
   text: PropTypes.string,
-  path: PropTypes.string
+  fn: PropTypes.func
 }
 
 export default Button

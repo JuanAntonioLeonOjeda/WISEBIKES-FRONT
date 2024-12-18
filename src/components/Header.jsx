@@ -1,14 +1,16 @@
+import { useNavigate } from "react-router-dom"
 import Button from '../components/Button'
 
 const Header = () => {
+  const navigate = useNavigate()
   const options = [
     {
       text: 'Home',
-      path: '/home'
+      fn: () => navigate('/home')
     },
     {
       text: 'About',
-      path: '/about'
+      fn: () => navigate('/about')
     }
   ]
 
@@ -18,7 +20,7 @@ const Header = () => {
         <Button
           key={idx}
           text={opt.text}
-          path={opt.path}
+          fn={opt.fn}
         />
       )
     })

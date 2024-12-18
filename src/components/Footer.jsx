@@ -3,7 +3,7 @@ const Footer = () => {
   return (
     <>
       <h3>
-        wow
+        wow 2024
       </h3>
     </>
   )
