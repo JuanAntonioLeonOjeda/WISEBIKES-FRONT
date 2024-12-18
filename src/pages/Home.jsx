@@ -41,11 +41,11 @@ const Home = () => {
   }
 
   return (
-    <>
+    <div className='h-[80vh]'>
       <h1>HOME</h1>
 
       {loading ? <h3>Loading...</h3> : displayUsers()}
-    </>
+    </div>
   );
 }
 

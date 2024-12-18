@@ -17,6 +17,7 @@ const SignupForm = () => {
       email,
       password
     }
+    
     console.log(body)
   }
 

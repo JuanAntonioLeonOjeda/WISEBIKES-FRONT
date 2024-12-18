@@ -5,8 +5,6 @@ import routerInst from './router'
 
 import userContext from './context/userContext'
 
-import './App.css'
-
 function App() {
   const [ user, setUser ] = useState({})
   const ctxValue = {
