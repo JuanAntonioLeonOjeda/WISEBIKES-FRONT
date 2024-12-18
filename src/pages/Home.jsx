@@ -56,20 +56,31 @@ const Home = () => {
   //   })
   // }
   
-  const { data, isLoading, isSuccess } = useQuery({ queryKey: ['profile'], queryFn: getOwnAccount })
+  const { 
+    data, 
+    isLoading, 
+    isSuccess
+  } = useQuery({ 
+    queryKey: ['account'], 
+    queryFn: getOwnAccount 
+  })
 
-  if (isSuccess) {
-    setUser(data)
+  useEffect(() => {
+    //Igualmente debemos usar setUser dentro de un useEffect, para que React pueda controlar cuándo actualizar el estado
+    if (isSuccess) {
+      setUser(data)
+    }
+  }, [isSuccess, data, setUser])
+
+  if (isLoading) {
+    return <div>Loading...</div>
   }
-  return (
-    <div className='h-[80vh]'>
-      <h1>HOME</h1>
 
-      {isLoading ? <h3>Loading...</h3> : 
-       <h3>Bienvenida {user.firstName} {user.lastName}</h3> 
-      }
+  return (
+    <div>
+      <h1>Welcome {user?.firstName} {user?.lastName}!</h1>
     </div>
-  );
+  )
 }
 
 export default Home
