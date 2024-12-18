@@ -24,3 +24,18 @@ export const getAllUsers = async () => {
     throw error;
   }
 };
+
+export const getOwnAccount = async () => {
+  try {
+    const { data } = await app.get("users/me", {
+      headers:{
+        token: localStorage.authorization,
+    }})
+    if (!data.success) {
+      throw Error('Error fetching profile')
+    }
+    return data.result
+  } catch (error) {
+    console.error(error)
+  }
+}

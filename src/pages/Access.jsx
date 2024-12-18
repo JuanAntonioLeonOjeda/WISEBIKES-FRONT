@@ -10,7 +10,7 @@ const Access = () => {
     setIsLogin(prev => !prev)
   }
   return (
-    <>
+    <div>
       <h1>
         WISEBIKES
       </h1>
@@ -25,7 +25,7 @@ const Access = () => {
         'I already have an account' 
         }
       </p>
-    </>
+    </div>
   )
 }
 

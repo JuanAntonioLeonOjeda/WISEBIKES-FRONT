@@ -1,13 +1,26 @@
 import PropTypes from "prop-types"
 
-const Button = ({text, fn}) => {
+const Button = ({type, text, fn}) => {
 
   const handleClick = () => {
     fn()
   }
 
+  const handleType = () => {
+    switch (type) {
+      case 'action':
+        return 'bg-green-200'
+      case 'danger':
+        return 'bg-red-500'
+      default:
+        return 'border border-black-200'
+    }
+  }
+
   return (
-    <button onClick={ handleClick }>
+    <button 
+    className={handleType()}
+    onClick={ handleClick }>
       <span>
         {text}
       </span>
@@ -16,6 +29,7 @@ const Button = ({text, fn}) => {
 }
 
 Button.propTypes = {
+  type: PropTypes.string,
   text: PropTypes.string,
   fn: PropTypes.func
 }
