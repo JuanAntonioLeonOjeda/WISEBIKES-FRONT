@@ -81,7 +81,7 @@ const Home = () => {
   }
 
   return (
-    <>
+    <div className='h-[80vh]'>
       <h1>HOME</h1>
       <Box sx={{ width: 500, height: 100 }}>
         <Slider
@@ -97,7 +97,10 @@ const Home = () => {
       {displayOptions()}
       {/* <button onClick={handleClick}>Get All Users</button> */}
       {loading ? <h3>Loading...</h3> : displayUsers()}
-    </>
+      <div className='h-[40vh] w-[40vw]'>
+        <video src="../../public/video.mp4" autoPlay loop></video>
+      </div>
+    </div>
   );
 }
 

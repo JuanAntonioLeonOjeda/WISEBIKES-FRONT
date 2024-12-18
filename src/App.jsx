@@ -4,8 +4,6 @@ import { RouterProvider } from 'react-router-dom'
 import userContext from './context/userContext'
 import routerInst from './router'
 
-import './App.css'
-
 function App() {
   const [nombre, setNombre] = useState('Pepita')
   const [ userName, setUserName ] = useState('Pepita')
