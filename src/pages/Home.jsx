@@ -4,6 +4,10 @@ import {
    useContext
   } from 'react'
 
+import { 
+  useQuery
+ } from '@tanstack/react-query'
+
 import {
   getAllUsers,
   getOwnAccount
@@ -15,7 +19,7 @@ const Home = () => {
   const { user, setUser } = useContext(userContext)
 
   // const [ users, setUsers ] = useState([])
-  const [ loading, setLoading ] = useState(true)
+  // const [ loading, setLoading ] = useState(true)
 
   // useEffect(() => {
   //   const fetchAllUsers = async () => {
@@ -26,16 +30,16 @@ const Home = () => {
   //   fetchAllUsers()
   // }, [])
 
-  useEffect(() => {
-    const fetchProfile = async () => {
-      const result = await getOwnAccount()
-      if (result) {
-        setUser(result)
-        setLoading(false)
-      }
-    }
-    fetchProfile()
-  }, [setUser])
+  // useEffect(() => {
+  //   const fetchProfile = async () => {
+  //     const result = await getOwnAccount()
+  //     if (result) {
+  //       setUser(result)
+  //       setLoading(false)
+  //     }
+  //   }
+  //   fetchProfile()
+  // }, [setUser])
 
   // const displayUsers = () => {
   //   return users?.map(usr => { //? sostiene la posibilidad de que la base de datos este vacia
@@ -51,12 +55,17 @@ const Home = () => {
   //     )
   //   })
   // }
+  
+  const { data, isLoading, isSuccess } = useQuery({ queryKey: ['profile'], queryFn: getOwnAccount })
 
+  if (isSuccess) {
+    setUser(data)
+  }
   return (
     <div className='h-[80vh]'>
       <h1>HOME</h1>
 
-      {loading ? <h3>Loading...</h3> : 
+      {isLoading ? <h3>Loading...</h3> : 
        <h3>Bienvenida {user.firstName} {user.lastName}</h3> 
       }
     </div>
